@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+       
+        h1{
+            text-align: center;
+            background-color: cadetblue;
+        }
+        button {
+            margin-bottom: 5px;
+            border-radius: 20px;
+            background-color: cadetblue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        body {
+            text-align: center;
+            background-color: lavenderblush;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+            min-height: 100vh; /* Full viewport height */
+        }
+        .tweet {
+            border-radius: 20px;
+            margin-bottom: 20px;
+            width: 50%;
+            height: 30px;
+            padding: 10px;
+            text-align: center;
+            display: none; /* Hide initially */
+        }
+      
+        button {
+           color:black;
+            margin-bottom: 5px; /* Add space below the button */
+        }
+        #posted{
+            margin-top: 5px;
+        }
+        #posted p {
+            margin-bottom: 5px; /* Add space below each paragraph */
+        }
+       
+       
+    </style>
+    <h1 class="ui" style="color: aquamarine;">Let's Tweet!</h1>
+    <input type="text" id="userid" class="ui"><br>
+    <label for="userid" class="ui">User ID</label><br>
+    <input type="number" class="ui" id="pwd"><br>
+    <label for="pwd" class="ui">Password</label><br>
+    <button type="button" class="ui" onclick="userAuth()">Submit</button><br>
+    
+    <div id="posted" class="container">
+        
+    </div>
+    <h1 class="tweet" style="color:black;background-color: aquamarine;">Welcome to Tweet!</h1>
+        <input type="text" id="msg" class="tweet" placeholder="type something..."><br>
+        <label for="msg" class="tweet">Type a message</label><br>
+        <button type="button" class="tweet" onclick="messagePosted()">Post</button><br>
+    <script>
+       function userAuth(){
+        let uid = document.getElementById("userid").value;
+            let pass = document.getElementById("pwd").value;
+
+            // Correct username and password for validation
+            const correctUsername = "KATHI_G";
+            const correctPassword = "1234";
+            
+            if (uid === correctUsername && pass === correctPassword) {
+                // Show tweet elements
+                let tweetElements = document.getElementsByClassName("tweet");
+                for (let i = 0; i < tweetElements.length; i++) {
+                    tweetElements[i].style.display = "block";
+                }
+                  // Hide ui elements
+                  let uiElements = document.getElementsByClassName("ui");
+                for (let i = 0; i < uiElements.length; i++) {
+                    uiElements[i].style.display = "none";
+                }
+            } else {
+                alert("Invalid username or password");
+            }
+            //document.getElementsByClassName("ui").style.display="none";
+        }
+
+      // let authenticate=userAuth();
+      function messagePosted(){
+      let data=document.getElementById("msg");   
+      //document.getElementById("posted").textContent=data.value;
+      let node=document.createElement("p");
+      node.textContent=data.value;
+      
+      console.log(node);
+      let divele=document.getElementById("posted");
+      divele.appendChild(node);
+      console.log(divele);
+      const breakline=document.createElement("br");
+      divele.appendChild(breakline);
+      alert("KATHI_G has posted something!");
+      data.value="";
+          }
+      //let posteddata=messagePosted();
+      
+    </script>
+</body>
+</html>
